@@ -2,12 +2,18 @@ import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
 import StyledNavbar from '../components/StyledNavbar.component'
+import { Provider } from 'react-redux'
+import store from '../redux/store'
 
 function MyApp({ Component, pageProps }) {
-  return <React.Fragment  {...pageProps}>
-    <StyledNavbar />
-    <Component {...pageProps} />
-  </React.Fragment>
-}
+  return (
+    <Provider store={store} {...pageProps}>
+      <React.Fragment {...pageProps}>
+        <StyledNavbar />
+        <Component {...pageProps} />
+      </React.Fragment>
+    </Provider>
+  )
 
-export default MyApp
+}
+export default MyApp;

@@ -8,7 +8,7 @@ function StyledNavbar() {
         <Navbar expand="lg" fixed="top" bg="white" style={{ zIndex: 5 }}>
             <Container>
                 <Link href="/">
-                    <Navbar.Brand as="h1" style={{ cursor: 'default' }}>
+                    <Navbar.Brand style={{ cursor: 'default' }}>
                         Passion Fashion
                     </Navbar.Brand>
                 </Link>
