@@ -1,15 +1,14 @@
 import { useState } from 'react'
-import Image from 'next/image'
 import { Col, Row, Button, Container } from "react-bootstrap"
 import ShoppingBag from '../public/ShoppingBag.svg'
-// import { useSelector } from 'react-redux'
-// import { useHistory } from 'react-router'
-// import { State } from '../../schemas/redux.schema'
+import { useSelector } from 'react-redux'
+import { useRouter } from 'next/router'
+import { State } from '../schemas/redux.schema'
 
 const CartIcon = (): JSX.Element => {
     const [isHovered, setIsHovered] = useState(false)
-    // const cartItems = useSelector((state: State) => state.cartItems)
-    // const history = useHistory()
+    const cartItems = useSelector((state: State) => state.cartItems)
+    const router = useRouter()
     return (
         <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} >
             <ShoppingBag width="30px" height="30px" className="d-none d-md-block" />
@@ -27,7 +26,7 @@ const CartIcon = (): JSX.Element => {
                     backgroundColor: "white"
                 }}
             >
-                {/* {cartItems.length > 0 ?
+                {cartItems.length > 0 ?
                     (<Row>
                         <Col xs={11}>
                             {
@@ -48,15 +47,15 @@ const CartIcon = (): JSX.Element => {
                                 )
                             }
                             <Row className="d-flex">
-                                <Button variant="dark" onClick={() => history.push('/checkout')}>Checkout</Button>
+                                <Button variant="dark" onClick={() => router.push('/checkout')}>Checkout</Button>
 
                             </Row>
                         </Col>
-                    </Row>) : */}
-                <Row className="d-flex">
-                    Your cart is empty!
-                </Row>
-                {/* } */}
+                    </Row>) :
+                    <Row className="d-flex">
+                        Your cart is empty!
+                    </Row>
+                }
             </Container >
         </div>
 

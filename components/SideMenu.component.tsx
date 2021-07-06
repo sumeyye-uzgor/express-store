@@ -1,16 +1,15 @@
 import { Row, Col } from 'react-bootstrap'
-// import { useDispatch } from 'react-redux'
-// import { setCategory } from '../redux/actions'
+import { useDispatch } from 'react-redux'
+import { setCategory } from '../redux/actions'
 interface Props {
     category: string,
     categoryName: string,
 }
 
 const MenuItem = (props: Props) => {
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     return (
-        <Row style={{ width: '100%', cursor: "pointer" }} >{props.categoryName}</Row>
-        // <Row style={{ width: '100%', cursor: "pointer" }} onClick={() => dispatch(setCategory(props.category))}>{props.categoryName}</Row>
+        <Row style={{ width: '100%', cursor: "pointer" }} onClick={() => dispatch(setCategory(props.category))}>{props.categoryName}</Row>
     )
 }
 function SideMenu() {
