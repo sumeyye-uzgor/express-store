@@ -5,11 +5,12 @@ import '../styles/ProductCard.module.css'
 import { addToCart, setDetailsProduct, openToast } from '../redux/actions'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 
 
 const ProductCard = ({ product }: { product: Product }): JSX.Element => {
     const cardStyle = {
-        backgroundImage: `url(${product.imageURL})`,
+
     }
     const [isHovered, setIsHovered] = useState(false)
     const dispatch = useDispatch()
@@ -27,11 +28,19 @@ const ProductCard = ({ product }: { product: Product }): JSX.Element => {
             <Card
                 className="mb-2 styledCard"
                 bg="white"
-
+                style={{ height: 400 }}
 
             >
+                {/* <Card.Img variant="top" src={product.imageURL} height="350px" style={{ border: "1px solid black" }} /> */}
                 {/* <Card.Img className="cardImage" src={product.imageUrl} alt={product.name} height="270px" onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} /> */}
-                <Col className="d-none d-md-flex imageCol1" style={cardStyle} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} >
+                <Card.Img className="d-none d-md-flex imageCol1" as="div" style={{
+                    backgroundImage: "url('" + product.imageURL + "')",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    height: 270,
+                    width: '100%',
+                    backgroundPosition: "center center"
+                }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} >
                     <Row className='imageRow'>
                         <Col className="imageCol2">
                             <Button className={isHovered ? 'cardButton' : 'd-none'} variant="dark" onClick={handleCart}> Add To Cart</Button>
@@ -41,8 +50,15 @@ const ProductCard = ({ product }: { product: Product }): JSX.Element => {
                     </Row>
 
 
-                </Col>
-                <Col className="d-md-none d-flex imageCol1" style={cardStyle} >
+                </Card.Img>
+                <Card.Img className="d-md-none d-flex imageCol1" as="div" style={{
+                    backgroundImage: `url(${product.imageURL})`,
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                    height: 270,
+                    width: "100%",
+                    backgroundPosition: "center center"
+                }} >
                     <Row className="imageRow">
                         <Col className="imageCol2">
                             <Button className="cardButton" variant="dark" onClick={handleCart}>Add To Cart</Button>
@@ -52,7 +68,7 @@ const ProductCard = ({ product }: { product: Product }): JSX.Element => {
                     </Row>
 
 
-                </Col>
+                </Card.Img>
 
 
                 <Card.Body className="cardBody d-flex align-items-end justify-content-between" onClick={handleDetails}>
@@ -67,7 +83,7 @@ const ProductCard = ({ product }: { product: Product }): JSX.Element => {
                     </Row>
 
                 </Card.Body>
-            </Card>
+            </Card >
         </Col >
     )
 
