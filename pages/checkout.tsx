@@ -28,9 +28,9 @@ function Checkout() {
                     </Row>
                     {cartItems.length > 0 ? cartItems.map(
                         item => (
-                            <Row key={item.id} className="my-3 align-items-center" >
+                            <Row key={item.name} className="my-3 align-items-center" >
                                 <Col xs={2} onClick={() => handleDetails(item)} style={{ cursor: "pointer" }}>
-                                    <img src={item.image} width="50px" alt="product" />
+                                    <img src={item.imageURL} width="50px" alt="product" />
                                 </Col>
                                 <Col xs={2} md={3} onClick={() => handleDetails(item)} style={{ cursor: "pointer" }}>
                                     {item.name}

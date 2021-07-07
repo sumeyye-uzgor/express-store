@@ -31,10 +31,10 @@ const CartIcon = (): JSX.Element => {
                         <Col xs={11}>
                             {
                                 cartItems.map(
-                                    item => (
-                                        <Row className="d-flex my-3" >
+                                    (item, idx) => (
+                                        <Row className="d-flex my-3" key={idx}>
                                             <Col xs={3} >
-                                                <img src={item.image} width="50px" height="30px" alt="deneme" style={{ marginRight: "20px" }} />
+                                                <img src={item.imageURL} width="50px" height="30px" alt="deneme" style={{ marginRight: "20px" }} />
 
                                             </Col>
                                             <Col xs={5} >

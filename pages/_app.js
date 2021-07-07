@@ -8,10 +8,10 @@ import store from '../redux/store'
 function MyApp({ Component, pageProps }) {
   return (
     <Provider store={store} {...pageProps}>
-      <React.Fragment {...pageProps}>
+      <div {...pageProps}>
         <StyledNavbar />
         <Component {...pageProps} />
-      </React.Fragment>
+      </div>
     </Provider>
   )
 

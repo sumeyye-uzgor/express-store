@@ -26,7 +26,7 @@ function Details() {
                             <Card.Body className="m-auto" >
                                 <Row className="m-auto">
                                     <Col xs={12} md={4} className="m-auto">
-                                        <Card.Img variant="top" src={product.image} height="350px" style={{ border: "1px solid black" }} />
+                                        <Card.Img variant="top" src={product.imageURL} height="350px" style={{ border: "1px solid black" }} />
 
                                     </Col>
                                     <Col xs={12} md={8}>

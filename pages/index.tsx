@@ -1,9 +1,17 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import HomeLayout from '../components/HomeLayout.component'
+import { Row, Col } from 'react-bootstrap'
 import styles from '../styles/Home.module.css'
-
-export default function Home() {
+import axios from 'axios'
+import { Product } from '../schemas/product.schema'
+import ProductCard from '../components/ProductCard.component'
+import { State } from '../schemas/redux.schema'
+export default function Home({ products }) {
+  // const [products, setProducts] = useState<Product[]>([])
+  const category = useSelector((state: State) => state.category)
   return (
     <div>
       <Head>
@@ -15,10 +23,38 @@ export default function Home() {
 
       <HomeLayout>
         <main>
-          <h1>Hello</h1>
+          <Row className="justify-content-center my-5" style={{ fontSize: "30px" }}>
+            {category === 'all' ? 'ALL PRODUCTS' : category.toUpperCase()}
+          </Row>
+          <Row className="justify-content-center">
+            {
+              products.map(
+                product =>
+                (
+                  <ProductCard product={product} key={product.id} />
+                )
+              )
+            }
+          </Row>
         </main>
       </HomeLayout>
 
     </div>
   )
+}
+
+export async function getServerSideProps() {
+  const res = await axios.get('https://limitless-lake-55070.herokuapp.com/product/')
+  // const res = await axios.get('https://fakestoreapi.com/products')
+  const products = await res.data
+
+  if (!products) {
+    console.log('nothing found')
+    return {}
+  }
+
+  console.log(products)
+  return {
+    props: { products }, // will be passed to the page component as props
+  }
 }
