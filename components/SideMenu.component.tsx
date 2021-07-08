@@ -1,33 +1,24 @@
 import { Row, Col } from 'react-bootstrap'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setCategory } from '../redux/actions'
-interface Props {
-    category: string,
-    categoryName: string,
-}
+import { State } from '../schemas/redux.schema'
 
-const MenuItem = (props: Props) => {
-    const dispatch = useDispatch()
-    return (
-        <Row style={{ width: '100%', cursor: "pointer" }} onClick={() => dispatch(setCategory(props.category))}>{props.categoryName}</Row>
-    )
-}
+
 function SideMenu() {
+    const dispatch = useDispatch()
+    const categories = useSelector((state: State) => state.categories)
     return (
         <Row style={{ height: "100vh", fontSize: "20px" }} className="mt-5">
             <Col>
-                <MenuItem categoryName="All Products" category="all" />
-                <Row><hr /></Row>
-                <MenuItem categoryName="Hats" category="hats" />
-                <Row><hr /></Row>
-                <MenuItem categoryName="Sneakers" category="sneakers" />
-                <Row><hr /></Row>
-                <MenuItem categoryName="Jackets" category="jackets" />
-                <Row><hr /></Row>
-                <MenuItem categoryName="Men" category="men" />
-                <Row><hr /></Row>
-                <MenuItem categoryName="Women" category="women" />
-                <Row><hr /></Row>
+                {categories.map(
+                    category => (
+                        <Row as="div" key={category}>
+                            <Row style={{ width: '100%', cursor: "pointer" }} onClick={() => dispatch(setCategory(category))}>{category}</Row>
+                            <Row><hr /></Row>
+                        </Row>
+                    )
+                )}
+
             </Col>
         </Row>
     )
