@@ -5,6 +5,7 @@ import { CartProduct, Category, Product } from "../schemas/product.schema";
 const cartItems: CartProduct[] = []
 const allItems: Product[] = []
 const allCategoryItems: Category[] = []
+const categories: string[] = []
 export const emptyProduct = {
     id: -1,
     name: "Empty Object",
@@ -20,7 +21,7 @@ const INITIAL_STATE = {
     detailsProduct: emptyProduct,
     allItems: [...allItems],
     allCategoryItems: [...allCategoryItems],
-    categories: [''],
+    categories: [...categories],
     toastInfo: {
         isToastOpen: false,
         isCartAction: false,
@@ -29,7 +30,7 @@ const INITIAL_STATE = {
     },
 }
 
-const reducer = (state = INITIAL_STATE, action: Action): State => {
+const reducer = (state = INITIAL_STATE, action: Action) => {
     switch (action.type) {
         case actionTypes.SET_CATEGORY:
             return {
@@ -85,7 +86,7 @@ const reducer = (state = INITIAL_STATE, action: Action): State => {
             let items = []
             let categoriesArr = []
             action.payload.map(
-                category => {
+                (category: Category) => {
                     categoriesArr.push(category.categoryName)
                     items.push(...category.products)
                 }
