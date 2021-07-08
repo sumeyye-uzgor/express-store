@@ -31,7 +31,7 @@ const INITIAL_STATE = {
 
 const reducer = (state = INITIAL_STATE, action: Action): State => {
     switch (action.type) {
-        case actionTypes.SET_CATEGOTY:
+        case actionTypes.SET_CATEGORY:
             return {
                 ...state,
                 category: action.payload
@@ -80,6 +80,21 @@ const reducer = (state = INITIAL_STATE, action: Action): State => {
                     toastMessage: "",
                     toastProduct: emptyProduct,
                 },
+            }
+        case actionTypes.SET_ITEMS:
+            let items = []
+            let categoriesArr = []
+            action.payload.map(
+                category => {
+                    categoriesArr.push(category.categoryName)
+                    items.push(...category.products)
+                }
+            )
+            return {
+                ...state,
+                allCategoryItems: action.payload,
+                allItems: [...items],
+                categories: [...categoriesArr]
             }
         default:
             return state

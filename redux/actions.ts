@@ -1,9 +1,9 @@
 import actionTypes from './actionTypes'
 import { Action, ToastInfoAction } from '../schemas/redux.schema'
-import { Product } from '../schemas/product.schema'
+import { Category, Product } from '../schemas/product.schema'
 
 export const setCategory = (categoryName: string): Action => ({
-    type: actionTypes.SET_CATEGOTY,
+    type: actionTypes.SET_CATEGORY,
     payload: categoryName
 })
 
@@ -37,3 +37,9 @@ export const closeToast = (): Action => ({
     type: actionTypes.CLOSE_TOAST,
     payload: null,
 })
+
+export const setItems = (categoryItems: Category[]): Action => ({
+    type: actionTypes.SET_ITEMS,
+    payload: categoryItems
+})
+
