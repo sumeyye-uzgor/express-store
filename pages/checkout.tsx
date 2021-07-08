@@ -20,7 +20,7 @@ function Checkout() {
         dispatch(openToast({ isCartAction: false, toastMessage: "We will take care of your order!" }))
     }
     return (
-        <Container>
+        <Container as="section">
             <Row className="justify-content-center">
                 <Col xs={12} md={8}>
                     <Row style={{ fontSize: "30px" }} className="justify-content-center my-5">

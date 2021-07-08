@@ -5,11 +5,11 @@ import Link from 'next/link'
 
 function StyledNavbar() {
     return (
-        <Navbar expand="lg" fixed="top" bg="white" style={{ zIndex: 5 }}>
+        <Navbar expand="lg" fixed="top" bg="white" style={{ zIndex: 5 }} as="nav"  >
             <Container>
                 <Link href="/" >
                     <Navbar.Brand style={{ cursor: 'default' }} >
-                        Passion Fashion
+                        Express Store
                     </Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

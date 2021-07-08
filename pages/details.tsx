@@ -19,7 +19,7 @@ function Details() {
     }, [product])
     return (
         product.id !== -1 ? (
-            <Container className="my-5">
+            <Container className="my-5" as="section">
                 <Row>
                     <Col xs={11}>
                         <Card className="mt-5">

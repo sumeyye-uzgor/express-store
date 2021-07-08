@@ -8,7 +8,7 @@ function SideMenu() {
     const dispatch = useDispatch()
     const categories = useSelector((state: State) => state.categories)
     return (
-        <Row style={{ height: "100vh", fontSize: "20px" }} className="mt-5">
+        <Row style={{ height: "100vh", fontSize: "20px" }} className="mt-5" as="aside">
             <Col>
                 {categories.map(
                     category => (

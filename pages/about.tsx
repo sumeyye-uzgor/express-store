@@ -2,7 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 
 function About() {
     return (
-        <Container>
+        <Container as="section">
             <Row className="justify-content-center my-5" style={{ fontSize: "30px" }}>
                 <Col xs={12} md={8} className="text-center">
                     About Us

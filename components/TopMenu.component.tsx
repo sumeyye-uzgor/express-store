@@ -11,7 +11,7 @@ function TopMenu() {
                 Categories
             </Dropdown.Toggle>
 
-            <Dropdown.Menu style={{ width: "90vw", zIndex: 3 }} >
+            <Dropdown.Menu style={{ width: "90vw", zIndex: 3, textAlign: "center" }} >
                 {categories.map(
                     category => <Dropdown.Item key={category} onClick={() => dispatch(setCategory(category))}>{category}</Dropdown.Item>
                 )}
