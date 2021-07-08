@@ -18,6 +18,7 @@ const ProductCard = ({ product }: { product: Product }): JSX.Element => {
         router.push('/details')
     }
     function handleCart() {
+        console.log(product)
         dispatch(addToCart(product))
         dispatch(openToast({ isCartAction: true, toastProduct: product }))
     }
@@ -49,8 +50,8 @@ const ProductCard = ({ product }: { product: Product }): JSX.Element => {
                 }} >
                     <Row className={`${styles.imageRow}`}>
                         <Col className={`${styles.imageCol2}`}>
-                            <Button className={isHovered ? styles.cardButton : 'd-none'} variant="dark" onClick={handleCart}> Add To Cart</Button>
-                            <Button className={isHovered ? styles.cardButton : 'd-none'} variant="dark" onClick={handleDetails}>Product Details</Button>
+                            <Button className={styles.cardButton} variant="dark" onClick={handleCart}> Add To Cart</Button>
+                            <Button className={styles.cardButton} variant="dark" onClick={handleDetails}>Product Details</Button>
 
                         </Col>
                     </Row>

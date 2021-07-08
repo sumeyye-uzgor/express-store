@@ -7,15 +7,15 @@ function StyledNavbar() {
     return (
         <Navbar expand="lg" fixed="top" bg="white" style={{ zIndex: 5 }}>
             <Container>
-                <Link href="/">
-                    <Navbar.Brand style={{ cursor: 'default' }}>
+                <Link href="/" >
+                    <Navbar.Brand style={{ cursor: 'default' }} >
                         Passion Fashion
                     </Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
 
-                    <Nav className="me-auto">
+                    <Nav className="ms-auto me-3">
                         <Link href="/">
                             <Nav.Link as="li" style={{ textDecoration: "none", color: "inherit", cursor: 'default' }}>
                                 Home
@@ -34,13 +34,18 @@ function StyledNavbar() {
                                 Contact
                             </Nav.Link>
                         </Link>
+                        <Link href="/checkout">
+                            <Nav.Link as="li" className="d-md-none d-block" style={{ textDecoration: "none", color: "inherit", cursor: 'default' }} >
+                                Checkout
+                            </Nav.Link>
+                        </Link>
 
                         {/* <ShoppingBag onMouseEnter width="30px" height="40px" className="cartIcon" /> */}
                         {/* <Nav.Link as="li" > */}
                         {/* </Nav.Link> */}
                     </Nav>
                 </Navbar.Collapse>
-                <CartIcon />
+                <CartIcon className="d-md-block d-none" />
 
 
             </Container>

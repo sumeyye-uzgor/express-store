@@ -5,17 +5,17 @@ import { useSelector } from 'react-redux'
 import { useRouter } from 'next/router'
 import { State } from '../schemas/redux.schema'
 
-const CartIcon = (): JSX.Element => {
+const CartIcon = ({ className }: { className: string }): JSX.Element => {
     const [isHovered, setIsHovered] = useState(false)
     const cartItems = useSelector((state: State) => state.cartItems)
     const router = useRouter()
     return (
-        <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} >
+        <div onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} className={className}>
             <ShoppingBag width="30px" height="30px" className="d-none d-md-block" />
-            <ShoppingBag width="30px" height="30px" className="d-block d-md-none" onClick={() => setIsHovered(!isHovered)} />
+            {/* <ShoppingBag width="30px" height="30px" className="d-block d-md-none" onClick={() => setIsHovered(!isHovered)} /> */}
 
             <Container
-                className={isHovered ? 'd-flex' : 'd-none'}
+                className={isHovered ? 'd-flex align-items-center justify-content-center' : 'd-none'}
                 style={{
                     position: 'fixed',
                     top: "43px",
@@ -27,7 +27,7 @@ const CartIcon = (): JSX.Element => {
                 }}
             >
                 {cartItems.length > 0 ?
-                    (<Row>
+                    (<Row className="justify-content-center">
                         <Col xs={11}>
                             {
                                 cartItems.map(
@@ -46,13 +46,12 @@ const CartIcon = (): JSX.Element => {
                                         </Row>)
                                 )
                             }
-                            <Row className="d-flex">
+                            <Row className="d-flex my-3" >
                                 <Button variant="dark" onClick={() => router.push('/checkout')}>Checkout</Button>
-
                             </Row>
                         </Col>
                     </Row>) :
-                    <Row className="d-flex">
+                    <Row className="d-flex my-3 justify-content-center align-items-center">
                         Your cart is empty!
                     </Row>
                 }
