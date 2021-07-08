@@ -1,22 +1,26 @@
 import { CartProduct, Category, Product } from "./product.schema";
 
-export interface Action {
+export interface Action
+{
     type: string,
     payload: any
 }
-export interface ToastInfo {
+export interface ToastInfo
+{
     isToastOpen: boolean,
     isCartAction: boolean,
     toastProduct: Product,
     toastMessage: string
 }
-export interface ToastInfoAction {
+export interface ToastInfoAction
+{
     isToastOpen?: boolean,
     isCartAction: boolean,
     toastProduct?: Product,
     toastMessage?: string
 }
-export interface State {
+export interface State
+{
     category: string,
     cartItems: CartProduct[],
     detailsProduct: Product,

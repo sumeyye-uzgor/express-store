@@ -17,11 +17,11 @@ export const emptyProduct = {
 
 const INITIAL_STATE = {
     category: 'all',
-    cartItems: [...cartItems],
+    cartItems: [ ...cartItems ],
     detailsProduct: emptyProduct,
-    allItems: [...allItems],
-    allCategoryItems: [...allCategoryItems],
-    categories: [...categories],
+    allItems: [ ...allItems ],
+    allCategoryItems: [ ...allCategoryItems ],
+    categories: [ ...categories ],
     toastInfo: {
         isToastOpen: false,
         isCartAction: false,
@@ -30,8 +30,10 @@ const INITIAL_STATE = {
     },
 }
 
-const reducer = (state = INITIAL_STATE, action: Action) => {
-    switch (action.type) {
+const reducer = ( state = INITIAL_STATE, action: Action ) =>
+{
+    switch ( action.type )
+    {
         case actionTypes.SET_CATEGORY:
             return {
                 ...state,
@@ -40,22 +42,22 @@ const reducer = (state = INITIAL_STATE, action: Action) => {
         case actionTypes.ADD_TO_CART:
             return {
                 ...state,
-                cartItems: state.cartItems.find(item => item.id === action.payload.id) ? state.cartItems.map(item => item.id === action.payload.id ? { ...item, qty: item.qty + 1 } : item) : [...state.cartItems, { ...action.payload, qty: 1 }]
+                cartItems: state.cartItems.find( item => item.id === action.payload.id ) ? state.cartItems.map( item => item.id === action.payload.id ? { ...item, qty: item.qty + 1 } : item ) : [ ...state.cartItems, { ...action.payload, qty: 1 } ]
             }
         case actionTypes.SET_CART_EMPTY:
             return {
                 ...state,
-                cartItems: [...cartItems]
+                cartItems: [ ...cartItems ]
             }
         case actionTypes.DELETE_FROM_CART:
             return {
                 ...state,
-                cartItems: state.cartItems.filter(item => item.id !== action.payload)
+                cartItems: state.cartItems.filter( item => item.id !== action.payload )
             }
         case actionTypes.SET_QUANTITY:
             return {
                 ...state,
-                cartItems: state.cartItems.map(item => item.id === action.payload.itemId ? { ...item, qty: item.qty + action.payload.qty } : item)
+                cartItems: state.cartItems.map( item => item.id === action.payload.itemId ? { ...item, qty: item.qty + action.payload.qty } : item )
             }
         case actionTypes.SET_DETAILS_PRODUCT:
             return {
@@ -86,16 +88,17 @@ const reducer = (state = INITIAL_STATE, action: Action) => {
             let items = []
             let categoriesArr = []
             action.payload.map(
-                (category: Category) => {
-                    categoriesArr.push(category.categoryName)
-                    items.push(...category.products)
+                ( category: Category ) =>
+                {
+                    categoriesArr.push( category.categoryName )
+                    items.push( ...category.products )
                 }
             )
             return {
                 ...state,
                 allCategoryItems: action.payload,
-                allItems: [...items],
-                categories: [...categoriesArr]
+                allItems: [ ...items ],
+                categories: [ ...categoriesArr ]
             }
         default:
             return state

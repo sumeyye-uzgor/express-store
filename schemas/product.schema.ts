@@ -1,5 +1,6 @@
 
-export interface Product {
+export interface Product
+{
     id: number;
     name: string;
     imageURL: string;
@@ -9,11 +10,13 @@ export interface Product {
 }
 
 
-export interface CartProduct extends Product {
+export interface CartProduct extends Product
+{
     qty: number;
 }
 
-export interface Category {
+export interface Category
+{
     id: number;
     categoryName: string;
     description: string;
