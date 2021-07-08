@@ -9,7 +9,7 @@ import axios from 'axios'
 import { Product } from '../schemas/product.schema'
 import ProductCard from '../components/ProductCard.component'
 import { State } from '../schemas/redux.schema'
-export default function Home({ products }) {
+export default function Home() {
   // const [products, setProducts] = useState<Product[]>([])
   const category = useSelector((state: State) => state.category)
   return (
@@ -43,18 +43,3 @@ export default function Home({ products }) {
   )
 }
 
-export async function getServerSideProps() {
-  const res = await axios.get('https://limitless-lake-55070.herokuapp.com/product/')
-  // const res = await axios.get('https://fakestoreapi.com/products')
-  const products = await res.data
-
-  if (!products) {
-    console.log('nothing found')
-    return {}
-  }
-
-  console.log(products)
-  return {
-    props: { products }, // will be passed to the page component as props
-  }
-}

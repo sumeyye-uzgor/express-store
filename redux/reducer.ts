@@ -1,12 +1,14 @@
 import actionTypes from "./actionTypes";
 import { State, Action } from "../schemas/redux.schema";
-import { CartProduct } from "../schemas/product.schema";
+import { CartProduct, Category, Product } from "../schemas/product.schema";
 
-const items: CartProduct[] = []
+const cartItems: CartProduct[] = []
+const allItems: Product[] = []
+const allCategoryItems: Category[] = []
 export const emptyProduct = {
     id: -1,
     name: "Empty Object",
-    image: "Empty Object",
+    imageURL: "Empty Object",
     description: "Empty Object",
     price: -1,
     category: "Empty Object"
@@ -14,8 +16,11 @@ export const emptyProduct = {
 
 const INITIAL_STATE = {
     category: 'all',
-    cartItems: [...items],
+    cartItems: [...cartItems],
     detailsProduct: emptyProduct,
+    allItems: [...allItems],
+    allCategoryItems: [...allCategoryItems],
+    categories: [''],
     toastInfo: {
         isToastOpen: false,
         isCartAction: false,
@@ -39,7 +44,7 @@ const reducer = (state = INITIAL_STATE, action: Action): State => {
         case actionTypes.SET_CART_EMPTY:
             return {
                 ...state,
-                cartItems: items
+                cartItems: [...cartItems]
             }
         case actionTypes.DELETE_FROM_CART:
             return {
